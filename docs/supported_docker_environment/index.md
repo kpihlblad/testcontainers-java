@@ -59,6 +59,11 @@ export TESTCONTAINERS_RYUK_DISABLED=true
     Previous to version 1.19.0, `export TESTCONTAINERS_RYUK_PRIVILEGED=true`
     was required for rootful mode. Starting with 1.19.0, this is no longer required.
 
+!!! note
+    Certain combinations of podman and runc is incompatible with adjusting /proc/self/oom_score_adj,
+    causing all container failing with the error: `runc: runc create failed: unable to start container process: can't get final child's PID from pipe`. 
+    A possible fix is to install crun >1.8 instead of runc. 
+
 ## Rancher Desktop
 
 In order to run testcontainers against [Rancher Desktop](https://rancherdesktop.io/) the env vars below should be set.
